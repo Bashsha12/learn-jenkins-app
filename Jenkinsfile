@@ -9,6 +9,9 @@ pipeline {
                     reuseNode true
                 }
             }
+            steps{
+                cleanWs()
+            }
             steps {
                 sh '''
                 ls -la
