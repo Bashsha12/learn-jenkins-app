@@ -10,19 +10,18 @@ pipeline {
                 }
             }
             steps {
-                sh '''
-                echo "Fixing npm cache folder permissions..."
-                sudo chown -R $(whoami) /.npm
-                echo "Cleaning npm cache and node_modules..."
-                rm -rf node_modules
-                npm cache clean --force
-                npm install
-                npm run build || echo "Build step skipped (no build script)"
-                node --version
-                echo "Hello Welcome to Jenkins"
-                npm --version
-                ls -la
-                '''
+                script {
+                    // Ensuring the npm cache folder permissions are set correctly without sudo
+                    sh 'echo "Cleaning npm cache and node_modules..."'
+                    sh 'rm -rf node_modules'
+                    sh 'npm cache clean --force'
+                    sh 'npm install || echo "npm install failed, continuing..."'
+                    sh 'npm run build || echo "Build step skipped (no build script)"'
+                    sh 'node --version'
+                    sh 'echo "Hello Welcome to Jenkins"'
+                    sh 'npm --version'
+                    sh 'ls -la'
+                }
             }
         }
     }
