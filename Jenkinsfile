@@ -16,7 +16,7 @@ pipeline {
                     sh 'rm -rf node_modules'
                     sh 'npm cache clean --force'
                     sh 'npm install || echo "npm install failed, continuing..."'
-                    sh 'npm run build || echo "Build step skipped (no build script)"'
+                    sh 'npm run build "'
                     sh 'node --version'
                     sh 'echo "Hello Welcome to Jenkins"'
                     sh 'npm --version'
