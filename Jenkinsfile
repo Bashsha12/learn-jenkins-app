@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                 ls -la
                 echo "Building the application..."
-                npm ci
+                npm install
                 npm run build
                 node --version
                 npm --version
