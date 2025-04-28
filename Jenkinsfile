@@ -17,6 +17,7 @@ pipeline {
         npm install
         npm run build || echo "Build step skipped (no build script)"
         node --version
+        echo "Hello Welcome to Jenkins"
         npm --version
         '''
     }
