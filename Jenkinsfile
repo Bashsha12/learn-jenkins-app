@@ -9,10 +9,9 @@ pipeline {
                     reuseNode true
                 }
             }
-            steps{
-                cleanWs()
-            }
+            
             steps {
+                cleanWs()
                 sh '''
                 ls -la
                 echo "Building the application..."
